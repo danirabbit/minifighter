@@ -46,6 +46,9 @@ PACKAGES
     webkit2gtk-4.0
 )
 
+include (GResource)
+glib_compile_resources (GLIB_RESOURCES_CATEGORIES SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/data/fighterview.gresource.xml)
+
 # tell cmake what to call the executable we just made
 add_executable(${EXEC_NAME} ${VALA_C})
 
