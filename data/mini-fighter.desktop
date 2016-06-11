@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mini Fighter
+GenericName=Simple Fighter Game
+Comment=Fight 2D Characters
+Categories=Games;
+Exec=mini-fighter
+Icon=application-default-icon
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=mini-fighter
