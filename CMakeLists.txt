@@ -35,8 +35,11 @@ include(ValaVersion)
 # make sure it's the desired version of vala
 ensure_vala_version("0.32" MINIMUM)
 
+include (GResource)
+glib_compile_resources (GLIB_RESOURCES_VIEW SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/data/fighterview.gresource.xml)
+
 # files we want to compile
-include(ValaPrecompile)
+include (ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
     src/MiniFighter.vala
 
@@ -46,11 +49,8 @@ PACKAGES
     webkit2gtk-4.0
 )
 
-include (GResource)
-glib_compile_resources (GLIB_RESOURCES_CATEGORIES SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/data/fighterview.gresource.xml)
-
 # tell cmake what to call the executable we just made
-add_executable(${EXEC_NAME} ${VALA_C})
+add_executable(${EXEC_NAME} ${VALA_C} ${GLIB_RESOURCES_VIEW})
 
 # install the binaries we just made
 install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
