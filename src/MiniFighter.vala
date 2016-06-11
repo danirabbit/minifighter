@@ -40,13 +40,10 @@ public class MiniFighter : Gtk.Application {
         window.set_titlebar (header);
         window.set_default_size (1024, 768);
 
-        var title_label = new Gtk.Label (APPNAME);
-        title_label.get_style_context ().add_class ("h1");
+        var view = new WebKit.WebView ();
+        view.load_uri ("http://google.com");
 
-        var layout = new Gtk.Grid ();
-        layout.add (title_label);
-
-        window.add (layout);
+        window.add (view);
         window.show_all ();
     }
 
