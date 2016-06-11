@@ -20,8 +20,8 @@
 
 public class MiniFighter : Gtk.Application {
 
-    public MyApp () {
-        Object (application_id: "minifighter",
+    public MiniFighter () {
+        Object (application_id: "mini-fighter",
         flags: ApplicationFlags.FLAGS_NONE);
     }
 
@@ -32,7 +32,7 @@ public class MiniFighter : Gtk.Application {
     }
 
     public static int main (string[] args) {
-        MyApp app = new MyApp ();
+        var app = new MiniFighter ();
         return app.run (args);
     }
 }
