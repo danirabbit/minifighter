@@ -20,15 +20,34 @@
 
 public class MiniFighter : Gtk.Application {
 
+    private string APPNAME = _("Mini Fighter");
+
     public MiniFighter () {
         Object (application_id: "mini-fighter",
         flags: ApplicationFlags.FLAGS_NONE);
     }
 
     protected override void activate () {
-        var app_window = new Gtk.ApplicationWindow (this);
+        Gtk.Settings.get_default ().set ("gtk-application-prefer-dark-theme", true);
 
-        app_window.show ();
+        var header = new Gtk.HeaderBar ();
+        header.get_style_context ().add_class ("compact");
+        header.show_close_button = true;
+        header.title = APPNAME;
+
+        var window = new Gtk.ApplicationWindow (this);
+        window.title = APPNAME;
+        window.set_titlebar (header);
+        window.set_default_size (1024, 768);
+
+        var title_label = new Gtk.Label (APPNAME);
+        title_label.get_style_context ().add_class ("h1");
+
+        var layout = new Gtk.Grid ();
+        layout.add (title_label);
+
+        window.add (layout);
+        window.show_all ();
     }
 
     public static int main (string[] args) {
