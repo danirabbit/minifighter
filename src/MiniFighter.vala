@@ -30,6 +30,9 @@ public class MiniFighter : Gtk.Application {
     protected override void activate () {
         Gtk.Settings.get_default ().set ("gtk-application-prefer-dark-theme", true);
 
+        weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
+        default_theme.add_resource_path ("/org/danrabbit/minifighter");
+
         var header = new Gtk.HeaderBar ();
         header.get_style_context ().add_class ("compact");
         header.show_close_button = true;
