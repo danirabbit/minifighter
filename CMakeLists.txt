@@ -54,6 +54,7 @@ install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 
 # install our .desktop file so the Applications menu will see it
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/mini-fighter.desktop DESTINATION ${DATADIR}/applications/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/mini-fighter.svg DESTINATION ${DATADIR}/icons/hicolor/64x64/apps/)
 
 # Translation files
 set (GETTEXT_PACKAGE "${CMAKE_PROJECT_NAME}")
