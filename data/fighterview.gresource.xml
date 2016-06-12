@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/org/danrabbit/minifighter">
     <file compressed="true">FighterView.html</file>
+    <file compressed="true">Sprite.svg</file>
   </gresource>
 </gresources>
