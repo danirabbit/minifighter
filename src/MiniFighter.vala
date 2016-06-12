@@ -22,18 +22,6 @@ public class MiniFighter : Gtk.Application {
 
     private string APPNAME = _("Mini Fighter");
 
-    const string SPRITE_STYLE_CSS = """
-        @keyframes breathe {
-            100% { background-position: -304px 0; }
-        }
-
-        .sprite {
-            animation: breathe 1s steps(4) infinite;
-            background-image: url("resource:///org/danrabbit/minifighter/Sprite.svg");
-            background-position: 0 0;
-        }
-    """;
-
     public MiniFighter () {
         Object (application_id: "mini-fighter",
         flags: ApplicationFlags.FLAGS_NONE);
@@ -55,20 +43,7 @@ public class MiniFighter : Gtk.Application {
         window.set_titlebar (header);
         window.set_default_size (1024, 768);
 
-        var provider = new Gtk.CssProvider ();
-        try {
-            provider.load_from_data (SPRITE_STYLE_CSS, SPRITE_STYLE_CSS.length);
-            Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-        } catch (Error e) {
-            critical (e.message);
-        }
-
-        var sprite = new Gtk.Grid ();
-        sprite.get_style_context ().add_class ("sprite");
-        sprite.width_request = 76;
-        sprite.height_request = 80;
-        sprite.halign = Gtk.Align.START;
-        sprite.valign = Gtk.Align.START;
+        var sprite = new Sprite ();
 
         window.add (sprite);
         window.show_all ();

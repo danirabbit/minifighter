@@ -42,6 +42,7 @@ glib_compile_resources (GLIB_RESOURCES_VIEW SOURCE data/fighterview.gresource.xm
 include (ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
     src/MiniFighter.vala
+    src/Sprite.vala
 
 # tell what libraries to use when compiling
 PACKAGES
