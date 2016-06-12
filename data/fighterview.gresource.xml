@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/danrabbit/minifighter">
-    <file alias="FighterView.html" compressed="true" preprocess="xml-stripblanks">FighterView.html</file>
+    <file compressed="true">FighterView.html</file>
   </gresource>
 </gresources>

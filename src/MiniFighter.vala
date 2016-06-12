@@ -44,7 +44,7 @@ public class MiniFighter : Gtk.Application {
         window.set_default_size (1024, 768);
 
         var view = new WebKit.WebView ();
-        view.load_uri ("resource:///org/danrabbit/minifighter/FighterView.html");
+        view.load_bytes (resources_lookup_data("/org/danrabbit/minifighter/FighterView.html", 0), null, null, null);
 
         window.add (view);
         window.show_all ();
