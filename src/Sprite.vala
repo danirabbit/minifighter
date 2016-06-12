@@ -25,10 +25,19 @@ public class Sprite : Gtk.Grid {
             100% { background-position: -304px 0; }
         }
 
+        @keyframes walk {
+            0% { background-position: -304px 0; }
+            100% { background-position: -684px 0; }
+        }
+
         .sprite {
             animation: breathe 1s steps(4) infinite;
             background-image: url("resource:///org/danrabbit/minifighter/Sprite.svg");
             background-position: 0 0;
+        }
+
+        .sprite.walking {
+            animation: walk 1s steps(5) infinite;
         }
     """;
 
@@ -60,16 +69,24 @@ public class Sprite : Gtk.Grid {
 
         switch (key) {
             case "Up":
-                margin_top += -1;
+                if (margin_top > 0) {
+                    margin_top += -1;
+                    get_style_context ().add_class ("walking");
+                }
                 break;
             case "Down":
                 margin_top += 1;
+                get_style_context ().add_class ("walking");
                 break;
             case "Left":
-                margin_start += -1;
+                if (margin_start > 0) {
+                    margin_start += -1;
+                    get_style_context ().add_class ("walking");
+                }
                 break;
             case "Right":
                 margin_start += 1;
+                get_style_context ().add_class ("walking");
                 break;
             default:
                 break;
@@ -77,5 +94,4 @@ public class Sprite : Gtk.Grid {
 
         return true;
     }
-
 }
