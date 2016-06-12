@@ -35,8 +35,11 @@ include(ValaVersion)
 # make sure it's the desired version of vala
 ensure_vala_version("0.32" MINIMUM)
 
+include (GResource)
+glib_compile_resources (GLIB_RESOURCES_VIEW SOURCE data/fighterview.gresource.xml)
+
 # files we want to compile
-include(ValaPrecompile)
+include (ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
     src/MiniFighter.vala
 
@@ -47,7 +50,7 @@ PACKAGES
 )
 
 # tell cmake what to call the executable we just made
-add_executable(${EXEC_NAME} ${VALA_C})
+add_executable(${EXEC_NAME} ${VALA_C} ${GLIB_RESOURCES_VIEW})
 
 # install the binaries we just made
 install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
