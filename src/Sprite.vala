@@ -33,7 +33,9 @@ public class Sprite : Gtk.Grid {
     """;
 
     public Sprite () {
-
+        add_events (Gdk.EventMask.KEY_PRESS_MASK);
+        can_focus = true;
+        key_press_event.connect (on_key_press_event);
     }
 
     construct {
@@ -50,6 +52,30 @@ public class Sprite : Gtk.Grid {
         height_request = 80;
         halign = Gtk.Align.START;
         valign = Gtk.Align.START;
+    }
+
+    private bool on_key_press_event (Gdk.EventKey event) {
+        string key = Gdk.keyval_name (event.keyval);
+        message ("Keypress: %s".printf (key));
+
+        switch (key) {
+            case "Up":
+                margin_top += -1;
+                break;
+            case "Down":
+                margin_top += 1;
+                break;
+            case "Left":
+                margin_start += -1;
+                break;
+            case "Right":
+                margin_start += 1;
+                break;
+            default:
+                break;
+        }
+
+        return true;
     }
 
 }
