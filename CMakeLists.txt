@@ -36,7 +36,7 @@ include(ValaVersion)
 ensure_vala_version("0.32" MINIMUM)
 
 include (GResource)
-glib_compile_resources (GLIB_RESOURCES_VIEW SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/data/fighterview.gresource.xml)
+glib_compile_resources (GLIB_RESOURCES_VIEW SOURCE data/fighterview.gresource.xml)
 
 # files we want to compile
 include (ValaPrecompile)
