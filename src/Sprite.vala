@@ -71,27 +71,35 @@ public class Sprite : Gtk.Grid {
             case "Up":
                 if (margin_top > 0) {
                     margin_top += -1;
-                    get_style_context ().add_class ("walking");
+                    animate ("walking", 1000);
                 }
                 break;
             case "Down":
                 margin_top += 1;
-                get_style_context ().add_class ("walking");
+                animate ("walking", 1000);
                 break;
             case "Left":
                 if (margin_start > 0) {
                     margin_start += -1;
-                    get_style_context ().add_class ("walking");
+                    animate ("walking", 1000);
                 }
                 break;
             case "Right":
                 margin_start += 1;
-                get_style_context ().add_class ("walking");
+                animate ("walking", 1000);
                 break;
             default:
                 break;
         }
 
         return true;
+    }
+
+    private void animate (string style_class, int duration) {
+        get_style_context ().add_class (style_class);
+        Timeout.add (duration, () => {
+            get_style_context ().remove_class (style_class);
+            return false;
+        });
     }
 }
